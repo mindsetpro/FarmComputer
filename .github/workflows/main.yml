@@ -25,5 +25,5 @@ jobs:
 
     - name: Run Bot
       env:
-        DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        TOKEN: ${{ secrets.TOKEN }}
       run: python main.py # Change this to the actual path of your bot script
