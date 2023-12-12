@@ -235,5 +235,5 @@ async def render_lvl_image(user: discord.Member, username: str, xp: int) -> Opti
     return out_filename
     
 import os
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
