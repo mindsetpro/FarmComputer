@@ -3,7 +3,7 @@ name: Discord Bot
 on:
   push:
     branches:
-      - master  # Change this to your main branch name
+      - mind  # Change this to your main branch name
 
 jobs:
   build:
