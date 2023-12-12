@@ -7,6 +7,7 @@ import shutil
 from math import floor, ceil
 from typing import Tuple, Optional
 import random, asyncio
+from flask import Flask, jsonify, request
 
 # Bot 
 INTENTS = discord.Intents.all()
@@ -233,7 +234,55 @@ async def render_lvl_image(user: discord.Member, username: str, xp: int) -> Opti
     large_bar.close()
 
     return out_filename
-  
+
+app = Flask(__name__)
+
+# Your existing bot code goes here...
+
+# Dashboard route
+@app.route('/')
+def index():
+    return "Stardew Valley RPG Bot Dashboard"
+
+# Endpoint for bot data
+@app.route('/botdata')
+def bot_data():
+    bot_data = {
+        'is_logged_in': bot.is_logged_in,
+        'command_prefix': bot.command_prefix,
+        'user': {
+            'id': bot.user.id,
+            'name': bot.user.name
+        }
+    }
+    return jsonify(bot_data)
+
+# Endpoint for sending embed update
+@app.route('/sendupdate', methods=['POST'])
+def send_embed_update():
+    data = request.json
+    channel_name = "bot-updates"  # Change this to the actual channel name
+
+    channel = discord.utils.get(bot.get_all_channels(), name=channel_name)
+    if channel is None:
+        return jsonify({'error': f'Channel "{channel_name}" not found.'}), 404
+
+    embed = discord.Embed(
+        title=data.get('title', ''),
+        description=data.get('description', ''),
+        color=discord.Color.green() if 'color' not in data else int(data['color'], 16)
+    )
+
+    if 'footer' in data:
+        embed.set_footer(text=data['footer'])
+    if 'footer_icon' in data:
+        embed.set_footer(text=data['footer'], icon_url=data['footer_icon'])
+    if 'image' in data:
+        embed.set_image(url=data['image'])
+
+    channel.send(embed=embed)
+    return jsonify({'status': 'success'})
+    
 import os
 TOKEN = os.getenv("BOT_TOKEN")
 bot.run(TOKEN)
