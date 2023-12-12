@@ -33,7 +33,7 @@ forest = {}
 mines = {}
 
 # Items  
-tools = ['Rusty Axe', 'Rusty Pickaxe', 'Fishing Rod', 'Hoe']
+tools = ['Rusty Axe', 'Rusty Pickaxe', 'Fishing Rod', 'Hoe', 'Sword']
 crops = ['Parsnip', 'Green Bean', 'Potato']
 goods = ['Wood', 'Stone', 'Coal', 'Iron Ore', 'Copper Ore']
 
