@@ -7,6 +7,7 @@ import shutil
 from math import floor, ceil
 from typing import Tuple, Optional
 import random, asyncio
+from modupload import *
 
 # Bot 
 INTENTS = discord.Intents.all()
