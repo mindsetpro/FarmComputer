@@ -3,7 +3,9 @@ from discord.ext import commands
 from discord import app_commands
 import random
 
-bot = commands.Bot(command_prefix='!')
+INTENTS = discord.Intents.all()
+INTENTS.members = True
+bot = commands.Bot(command_prefix='?', intents=INTENTS)
 tree = app_commands.CommandTree(bot)
 
 @tree.command(name="modupload", description="Upload a mod")
