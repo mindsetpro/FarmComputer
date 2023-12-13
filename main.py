@@ -237,7 +237,7 @@ async def render_lvl_image(user: discord.Member, username: str, xp: int) -> Opti
 
 @bot.tree.command(name="modupload", description="Upload a mod") 
 @app_commands.describe(zip_file="The mod ZIP file", description="A description of the mod", images="Image files of the mod")
-async def modupload(interaction: discord.Interaction, zip_file: discord.Attachment, description: str, images: list[discord.Attachment]):
+async def modupload(interaction, zip_file, description, images):
     await interaction.channel.send(f"Mod upload received!\nDescription: {description}\nImages: {len(images)} images") 
     await interaction.user.send(files=[zip_file] + images)
 
