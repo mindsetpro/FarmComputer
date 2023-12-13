@@ -6,7 +6,6 @@ import random
 INTENTS = discord.Intents.all()
 INTENTS.members = True
 bot = commands.Bot(command_prefix='?', intents=INTENTS)
-tree = app_commands.CommandTree(bot)
 
 @tree.command(name="modupload", description="Upload a mod")
 @app_commands.describe(zip_file="The mod ZIP file", description="A description of the mod", images="Image files of the mod")
