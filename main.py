@@ -7,8 +7,8 @@ import shutil
 from math import floor, ceil
 from typing import Tuple, Optional
 import random, asyncio
-from modupload import *
-from discord app_commands
+from discord import app_commands
+
 # Bot 
 INTENTS = discord.Intents.all()
 INTENTS.members = True
