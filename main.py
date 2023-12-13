@@ -14,6 +14,11 @@ INTENTS = discord.Intents.all()
 INTENTS.members = True
 bot = commands.Bot(command_prefix='?', intents=INTENTS)
 
+@bot.event
+async def on_ready():
+    await bot.tree.sync()
+    print(f"Logged in as {bot.user} (ID: {bot.user.id})")
+    
 # Constants
 XP_PER_LVL = 500  
 FOREST_CHOP_TIMER = 3 # seconds
