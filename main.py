@@ -234,27 +234,6 @@ async def render_lvl_image(user: discord.Member, username: str, xp: int) -> Opti
     large_bar.close()
 
     return out_filename
-
-@bot.tree.command()
-async def modupload(
-    interaction: discord.Interaction,
-    zip_file: discord.Attachment,
-    description: str,
-    images: list
-):
-    await interaction.channel.send(f"Mod upload received!\nDescription: {description}\nImages: {len(images)} images") 
-    await interaction.user.send(files=[zip_file] + images)
-
-@bot.tree.command(name="contest_start", description="Start a contest")
-@app_commands.checks.has_role("Admin")  
-async def contest_start(interaction: discord.Interaction):
-    channel = bot.get_channel(EVENT_SCHEDULE_CHANNEL_ID)
-    await channel.send("Contest has started! Here is the schedule:")
-    
-    for i in range(3):
-        event = random.choice(["Fishing Contest", "Luau", "Dance of the Moonlight Jellies"])
-        date = random.randint(1, 28)
-        await channel.send(f"{event} on the {date}")
         
 @bot.tree.command(name="stardewwiki")
 async def stardewwiki(interaction: discord.Interaction, search: str):
