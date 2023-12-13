@@ -13,6 +13,7 @@ from modupload import *
 INTENTS = discord.Intents.all()
 INTENTS.members = True
 bot = commands.Bot(command_prefix='?', intents=INTENTS)
+tree = app_commands.CommandTree(bot)
 
 # Constants
 XP_PER_LVL = 500  
