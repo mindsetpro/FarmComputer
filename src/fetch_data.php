@@ -7,7 +7,7 @@ function fetchDataFromDiscord() {
         die('Discord bot token not provided.');
     }
 
-    $url = 'https://discord.com/api/guilds/YOUR_GUILD_ID/members'; // Replace YOUR_GUILD_ID
+    $url = 'https://discord.com/api/guilds/137344473976799233/members'; // Replace YOUR_GUILD_ID
 
     $headers = [
         'Authorization: Bot ' . $botToken,
